@@ -2,6 +2,10 @@
   font-family: "pokemon";
   src: url("../assets/fonts/Pokemon Solid.ttf");
 }
+@font-face {
+  font-family: "roboto";
+  src: url("../assets/fonts/Roboto-Regular.ttf");
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -105,6 +109,7 @@ table {
   .container {
     background-color: #ef5350;
   }
+
   .game {
     width: 80%;
     border-left: 8px solid #ffe435;
@@ -135,7 +140,6 @@ table {
 }
 .game main {
   width: 100%;
-  flex-grow: 1;
 }
 .game main .image-container {
   width: 80%;
@@ -168,7 +172,7 @@ table {
 }
 @media screen and (min-width: 429px) {
   .game main .image-container img {
-    width: 60%;
+    width: 50%;
   }
 }
 .game main .image-container .pokemon-hidden {
@@ -192,6 +196,13 @@ table {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+@media screen and (min-width: 429px) {
+  .game main .options {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
 .game main .options button {
   margin-top: 0.4rem;
   border: none;
@@ -211,10 +222,29 @@ table {
 }
 @media screen and (min-width: 429px) {
   .game main .options button {
+    margin-top: 0;
     font-size: 1.75rem;
     border-radius: 8px;
     padding: 1.5rem 1.75rem;
   }
+}
+.game .footer {
+  font-family: "roboto";
+  background: rgb(239, 83, 80);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7333333333) 0%, rgba(0, 212, 255, 0) 100%);
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.game .footer a {
+  text-decoration: none;
+  color: #ef5350;
+}
+.game .footer a:visited {
+  color: #ef5350;
 }
 
 /*# sourceMappingURL=style.css.map */
