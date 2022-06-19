@@ -1,0 +1,1 @@
+//# sourceMappingURL=pokemonRequest.js.map
