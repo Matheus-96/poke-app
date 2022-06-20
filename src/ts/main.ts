@@ -6,31 +6,46 @@ let getBtn = document.querySelector("#getPokemon") as HTMLButtonElement
 let img = document.querySelector('#pokemon-image') as HTMLImageElement
 let options = document.querySelector('.options') as HTMLUListElement
 let pokemonName = document.querySelector('.pokemon-name') as HTMLHeadingElement
+let imageContainer = document.querySelector('.image-container') as HTMLDivElement
 
 window.addEventListener('load', updatePokemons)
 
 getBtn?.addEventListener('click', updatePokemons)
 
 options?.addEventListener('click', (event) => {
+
     let element: HTMLButtonElement
     element = event.target as HTMLButtonElement
+
+    if (element.textContent == `Play again!`) return
+
     if (element.innerText == img.dataset.name) {
         img.classList.remove('pokemon-hidden')
         img.classList.add('pokemon-visible')
         pokemonName.classList.add('visible')
         pokemonName.textContent = `Its's ${element.innerText}!`
-        options.innerHTML = ''
-        options.append(createButton(`Play again!`, updatePokemons))
-        options.append(createButton(`See in Pokedex`))
+        finishGame(true)
+    } else {
+        img.classList.add('pokemon-disappear')
+        pokemonName.classList.add('visible-error')
+        pokemonName.textContent = `Oh no! :(`
+        finishGame()
     }
 })
 
-async function updatePokemons() {
+function finishGame(win: boolean = false) {
+    options.innerHTML = ''
+    options.append(createButton(`Play again!`, updatePokemons))
+    if(win)options.append(createButton(`See in Pokedex`))
+}
 
+async function updatePokemons() {
+    img.className = ''
+    pokemonName.className = ''
     options.innerHTML = ''
     pokemonName.classList.remove(`visible`)
     let selected: number
-    selected = randomBeetwen(1, 3)
+    selected = randomBeetwen(0, 3)
 
     for (let index = 0; index <= 2; index++) {
         let pokemon: Pokemon
@@ -59,8 +74,8 @@ async function getPokemon(): Promise<Pokemon> {
 function createButton(text: string, click: Function | null = null): HTMLButtonElement {
     let b = document.createElement(`button`) as HTMLButtonElement
     b.textContent = text
-    if(click){
-        b.addEventListener('click', ()=> click())
+    if (click) {
+        b.addEventListener('click', () => click())
     }
     return b
 }

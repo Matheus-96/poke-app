@@ -6,8 +6,6 @@
     }
 }
 
-.game-body {}
-
 @include mediaTablet() {
     .container {
         background-color: $primary;
@@ -69,6 +67,11 @@
                     animation-name: showName;
                     animation-duration: 2s;
                 }
+                &.visible-error {
+                    opacity: 1;
+                    animation-name: showError;
+                    animation-duration: 1s;
+                }
             }
             img {
                 width: 100%;
@@ -85,6 +88,12 @@
                 animation-name: pokemonVisible;
                 animation-duration: 1s;
                 animation-iteration-count: 1;
+            }
+            .pokemon-disappear {
+                animation-name: pokemonDisappear;
+                animation-duration: 1s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
             }
         }
         @include mediaTablet() {

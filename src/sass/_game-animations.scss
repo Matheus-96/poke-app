@@ -37,11 +37,29 @@
     }
 }
 
+@keyframes pokemonDisappear {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
 @keyframes showName {
     0% {
         transform: rotateZ(0turn) scale(0);
     }
     100% {
         transform: rotateZ(2turn) scale(1);
+    }
+}
+
+@keyframes showError {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
     }
 }

@@ -101,12 +101,28 @@ table {
     transform: rotate(0deg);
   }
 }
+@keyframes pokemonDisappear {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
 @keyframes showName {
   0% {
     transform: rotateZ(0turn) scale(0);
   }
   100% {
     transform: rotateZ(2turn) scale(1);
+  }
+}
+@keyframes showError {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 @media screen and (min-width: 429px) {
@@ -173,6 +189,11 @@ table {
   animation-name: showName;
   animation-duration: 2s;
 }
+.game main .image-container h2.visible-error {
+  opacity: 1;
+  animation-name: showError;
+  animation-duration: 1s;
+}
 .game main .image-container img {
   width: 100%;
 }
@@ -188,6 +209,12 @@ table {
   animation-name: pokemonVisible;
   animation-duration: 1s;
   animation-iteration-count: 1;
+}
+.game main .image-container .pokemon-disappear {
+  animation-name: pokemonDisappear;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 @media screen and (min-width: 429px) {
   .game main .image-container {
