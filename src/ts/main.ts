@@ -10,10 +10,8 @@ let imageContainer = document.querySelector('.image-container') as HTMLDivElemen
 
 window.addEventListener('load', updatePokemons)
 
-getBtn?.addEventListener('click', updatePokemons)
-
-options?.addEventListener('click', (event) => {
-
+function validateAnswer (event: Event) {
+    
     let element: HTMLButtonElement
     element = event.target as HTMLButtonElement
 
@@ -31,7 +29,7 @@ options?.addEventListener('click', (event) => {
         pokemonName.textContent = `Oh no! :(`
         finishGame()
     }
-})
+}
 
 function finishGame(win: boolean = false) {
     options.innerHTML = ''
@@ -58,7 +56,7 @@ async function updatePokemons() {
                 img.classList.add('pokemon-hidden')
             }
         }
-        options.append(createButton(pokemon.name) as HTMLButtonElement)
+        options.append(createButton(pokemon.name, validateAnswer) as HTMLButtonElement)
     }
 }
 function randomBeetwen(min: number, max: number): number {
@@ -75,7 +73,7 @@ function createButton(text: string, click: Function | null = null): HTMLButtonEl
     let b = document.createElement(`button`) as HTMLButtonElement
     b.textContent = text
     if (click) {
-        b.addEventListener('click', () => click())
+        b.addEventListener('click', (event) => click(event))
     }
     return b
 }

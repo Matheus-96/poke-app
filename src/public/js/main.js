@@ -14,8 +14,7 @@ let options = document.querySelector('.options');
 let pokemonName = document.querySelector('.pokemon-name');
 let imageContainer = document.querySelector('.image-container');
 window.addEventListener('load', updatePokemons);
-getBtn === null || getBtn === void 0 ? void 0 : getBtn.addEventListener('click', updatePokemons);
-options === null || options === void 0 ? void 0 : options.addEventListener('click', (event) => {
+function validateAnswer(event) {
     let element;
     element = event.target;
     if (element.textContent == `Play again!`)
@@ -33,7 +32,7 @@ options === null || options === void 0 ? void 0 : options.addEventListener('clic
         pokemonName.textContent = `Oh no! :(`;
         finishGame();
     }
-});
+}
 function finishGame(win = false) {
     options.innerHTML = '';
     options.append(createButton(`Play again!`, updatePokemons));
@@ -59,7 +58,7 @@ function updatePokemons() {
                     img.classList.add('pokemon-hidden');
                 }
             }
-            options.append(createButton(pokemon.name));
+            options.append(createButton(pokemon.name, validateAnswer));
         }
     });
 }
@@ -77,7 +76,7 @@ function createButton(text, click = null) {
     let b = document.createElement(`button`);
     b.textContent = text;
     if (click) {
-        b.addEventListener('click', () => click());
+        b.addEventListener('click', (event) => click(event));
     }
     return b;
 }
