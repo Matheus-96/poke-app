@@ -1,0 +1,59 @@
+@import './variables';
+@import './pokedex-animations';
+.dialog {
+    position: absolute;
+    padding: 0;
+    top: 5%;
+    width: 90%;
+    z-index: 10;
+    border: none;
+    font-family: 'roboto';
+    background-color: #00000000;
+    .header {
+        background-color: $primary;
+        border-radius: 10px 10px 0 0;
+        .header-top {}
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .title-container {
+                flex-grow: 1;
+                .pokedex-name {
+                    text-align: center;
+                    color: $white;
+                    font-size: 1.5rem;
+                    text-shadow: 1px 1px 4px black;
+                }
+            }
+            .image-container {
+                background-image: url('../assets/images/bgPokedex.jpg');
+                background-size: contain;
+                animation-name: pokedexBgOffset;
+                animation-fill-mode: none;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                animation-duration: 100s;
+                width: 40%;
+                display: flex;
+                justify-content: center;
+                border-radius: 0 10px 0 0;
+                margin: 0.2rem;
+                .pokemon-image {
+                    width: 80%;
+                }
+            }
+        }
+    }
+    .body {
+        background-color: rgb(234, 234, 234);
+        padding: 1rem;
+        border-left: 0.2rem solid $primary;
+        border-right: 0.2rem solid $primary;
+        .flavor-container {
+            .flavor-text {
+                line-height: 1.25rem;
+            }
+        }
+    }
+}

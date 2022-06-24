@@ -128,6 +128,7 @@ table {
 @media screen and (min-width: 429px) {
   .container {
     background-color: #ef5350;
+    position: relative;
   }
   .game {
     width: 80%;
@@ -279,6 +280,69 @@ table {
 }
 .game .footer a:visited {
   color: #ef5350;
+}
+
+@keyframes pokedexBgOffset {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+.dialog {
+  position: absolute;
+  padding: 0;
+  top: 5%;
+  width: 90%;
+  z-index: 10;
+  border: none;
+  font-family: "roboto";
+  background-color: rgba(0, 0, 0, 0);
+}
+.dialog .header {
+  background-color: #ef5350;
+  border-radius: 10px 10px 0 0;
+}
+.dialog .header .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dialog .header .header-content .title-container {
+  flex-grow: 1;
+}
+.dialog .header .header-content .title-container .pokedex-name {
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 4px black;
+}
+.dialog .header .header-content .image-container {
+  background-image: url("../assets/images/bgPokedex.jpg");
+  background-size: contain;
+  animation-name: pokedexBgOffset;
+  animation-fill-mode: none;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 100s;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  border-radius: 0 10px 0 0;
+  margin: 0.2rem;
+}
+.dialog .header .header-content .image-container .pokemon-image {
+  width: 80%;
+}
+.dialog .body {
+  background-color: rgb(234, 234, 234);
+  padding: 1rem;
+  border-left: 0.2rem solid #ef5350;
+  border-right: 0.2rem solid #ef5350;
+}
+.dialog .body .flavor-container .flavor-text {
+  line-height: 1.25rem;
 }
 
 /*# sourceMappingURL=style.css.map */

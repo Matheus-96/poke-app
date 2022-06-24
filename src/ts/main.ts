@@ -8,7 +8,20 @@ let options = document.querySelector('.options') as HTMLUListElement
 let pokemonName = document.querySelector('.pokemon-name') as HTMLHeadingElement
 let imageContainer = document.querySelector('.image-container') as HTMLDivElement
 
-window.addEventListener('load', updatePokemons)
+window.addEventListener('load', ()=>writeFlavor("In the autumn spawning season, they can be seen swimming powerfully up rivers and creeks."))
+
+function writeFlavor(text: String){
+    let p = document.querySelector('.flavor-text') as HTMLParagraphElement
+    p.textContent = ''
+    if(p){
+        let index = 0
+        let writeText = setInterval(() => {
+            p.textContent += text.charAt(index)
+            index++
+            if(index == text.length) clearInterval(writeText)
+        }, 40);
+    }
+}
 
 function validateAnswer (event: Event) {
     

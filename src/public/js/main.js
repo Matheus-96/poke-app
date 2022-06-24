@@ -13,7 +13,20 @@ let img = document.querySelector('#pokemon-image');
 let options = document.querySelector('.options');
 let pokemonName = document.querySelector('.pokemon-name');
 let imageContainer = document.querySelector('.image-container');
-window.addEventListener('load', updatePokemons);
+window.addEventListener('load', () => writeFlavor("In the autumn spawning season, they can be seen swimming powerfully up rivers and creeks."));
+function writeFlavor(text) {
+    let p = document.querySelector('.flavor-text');
+    p.textContent = '';
+    if (p) {
+        let index = 0;
+        let writeText = setInterval(() => {
+            p.textContent += text.charAt(index);
+            index++;
+            if (index == text.length)
+                clearInterval(writeText);
+        }, 40);
+    }
+}
 function validateAnswer(event) {
     let element;
     element = event.target;

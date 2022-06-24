@@ -9,6 +9,7 @@
 @include mediaTablet() {
     .container {
         background-color: $primary;
+        position: relative;
     }
     .game {
         width: 80%;
